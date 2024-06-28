@@ -13,7 +13,7 @@ function submit() {
     }
 
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", `https://cute-shalna-greanpeakcharger-aa7d6c68.koyeb.app/`);
+    xhr.open("GET", `classic-gerianne-greanpeakcharger-54019e82.koyeb.app/`);
     xhr.responseType = "json";
 
     xhr.onload = () => {
