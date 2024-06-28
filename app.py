@@ -1,6 +1,7 @@
 import json
 from flask import Flask, render_template, request
 import requests
+from flask_cors import CORS  # Import Flask-CORS
 from api.data.endPoints import BackendServerException
 from api.tools.converter import InputParameterException
 from api.usecase import (
@@ -10,12 +11,11 @@ from api.usecase import (
 )
 
 app = Flask(__name__)
-
+CORS(app)  # Aktiviert CORS für alle Routen
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     return render_template("home.html")
-
 
 @app.route("/strom", methods=["GET", "POST"])
 def stromPrediction():
@@ -28,7 +28,6 @@ def stromPrediction():
 
     return render_template("index.html", data=json.dumps(data))
 
-
 @app.route("/stromRechner", methods=["GET", "POST"])
 def stromRechner():
     zip_code = request.args.get("zip")
@@ -37,7 +36,6 @@ def stromRechner():
     split = request.args.get("split")
 
     return executeUsecase(stromRechnerUsecase, zip_code, dur, take_off, split)
-
 
 @app.route("/stromRechnerSolar", methods=["GET", "POST"])
 def stromRechnerSolar():
@@ -48,7 +46,6 @@ def stromRechnerSolar():
 
     return executeUsecase(stromRechnerSolarUsecase, zip_code, dur, take_off, split)
 
-
 @app.route("/stromRechnerCombined", methods=["GET", "POST"])
 def stromRechnerCombined():
     zip_code = request.args.get("zip")
@@ -58,7 +55,6 @@ def stromRechnerCombined():
 
     return executeUsecase(stromRechnerCombinedUsecase, zip_code, dur, take_off, split)
 
-
 @app.route("/stromTest")
 def stromTest():
     resp = requests.get("https://gruenstromindex.de/v2.0/gsi/prediction", params={"zip": "60594"})
@@ -66,11 +62,9 @@ def stromTest():
 
     return json.dumps(response)
 
-
 @app.route("/test")
 def test():
     return "system online"
-
 
 def executeUsecase(usecase, *args, **kwargs):
     try:
@@ -83,7 +77,5 @@ def executeUsecase(usecase, *args, **kwargs):
     except Exception as e:
         return json.dumps({"code": 500, "data": str(e)})
 
-
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8000, debug=False)
-
