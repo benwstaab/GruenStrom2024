@@ -18,216 +18,246 @@
     <link rel="stylesheet" href="../static/css/bootsnav.css">
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
 </head>
 
 <body>
-    <section id="home" class="welcome-hero">
+<section id="home" class="welcome-hero">
 
-        <!-- top-area Start -->
-        <div class="top-area">
-            <div class="header-area">
-                <!-- Start Navigation -->
-                <nav class="navbar navbar-default bootsnav navbar-sticky navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
-
-                    <div class="container">
-
-                        <!-- Start Header Navigation -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <a class="navbar-brand" href="index.html">GreenPeak Charge<span></span></a>
-                        </div>
-                        <!--/.navbar-header-->
-                        <!-- End Header Navigation -->
-
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
-                            <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                                <li class="scroll active"><a href="#home">Home</a></li>
-                                <li class="scroll"><a href="#sustainability">Charge Estimator</a></li>
-                                <li class="scroll"><a href="#featured-cars">Solar Power</a></li>
-                                <li class="scroll"><a href="#featured-cars">Sustainability</a></li>
-                                <li class="scroll"><a href="#new-cars">About</a></li>
-                            </ul>
-                            <!--/.nav -->
-                        </div>
-                        <!-- /.navbar-collapse -->
+    <div class="top-area">
+        <div class="header-area">
+            <nav class="navbar navbar-default bootsnav navbar-sticky navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand" href="home.html">GreenPeak Charge</a>
                     </div>
-                    <!--/.container-->
-                </nav>
-                <!--/nav-->
-                <!-- End Navigation -->
-            </div>
-            <!--/.header-area-->
-            <div class="clearfix"></div>
-
+                    <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+                        <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                            <li class="scroll active"><a href="#home">Home</a></li>
+                            <li class="scroll"><a href="#estimator">Charge Estimator</a></li>
+                            <li class="scroll"><a href="#sustainability">Features</a></li>
+                            <li class="scroll"><a href="#about-us">About Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-        <!-- /.top-area-->
-        <!-- top-area End -->
+        <div class="clearfix"></div>
+    </div>
 
-        <div class="container">
-            <div class="welcome-hero-txt">
-                <h2>Charge Green, Drive Clean.</h2>
-                <p>Lower CO2 Emissions by an average of unbelievable much and charge sustainably.</p>
+    <div class="container">
+        <div class="welcome-hero-txt">
+            <h2>Charge Green, Drive Clean.</h2>
+            <p>Encourage green energy sources and charge your car sustainably.</p>
+        </div>
+    </div>
+
+    <div class="container" id="estimator">
+        <div class="model-search-content">
+            <div class="input">
+                <div class="col-md-3 col-sm-12">
+                    <div class="single-model-search">
+                        <h3>ZIP Code</h3>
+                        <div class="model-input">
+                            <input class="form-control" type="text" id='zipcode' name="zipcode" placeholder="ZIP" pattern="\d{5}" maxlength="5" inputmode="numeric" value="60594" required />
+                            <script>
+                                // Ensure only numeric input
+                                document.getElementById('zipcode').addEventListener('input', function (e) {
+                                    this.value = this.value.replace(/[^0-9]/g, '').slice(0, 5);
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <div class="single-model-search">
+                        <h3>Loading Duration</h3>
+                        <div class="model-input">
+                            <input class="form-control" type="text" id='loading' name="loading" placeholder="hh" pattern="\d{5}" maxlength="2" inputmode="numeric" value="4" required />
+                            <script>
+                                // Ensure only numeric input
+                                document.getElementById('loading').addEventListener('input', function (e) {
+                                    this.value = this.value.replace(/[^0-9]/g, '').slice(0, 5);
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <div class="single-model-search">
+                        <h3>Departure Time</h3>
+                        <div class="model-input">
+                            <input class="form-control" type="text" id='dep' name="dep" placeholder="hh" pattern="\d{5}" maxlength="2" inputmode="numeric" value="12" required />
+                            <script>
+                                 // Ensure only numeric input
+                                document.getElementById('dep').addEventListener('input', function (e) {
+                                    this.value = this.value.replace(/[^0-9]/g, '').slice(0, 5);
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <div class="single-model-search">
+                        <h3>Mode</h3>
+                        <div class="model-input">
+                            <select class="form-control" id="modi">
+                                <option value="norm">Grid Energy</option>
+                                <option value="solar">Own Solar Energy</option>
+                                <option value="comb">Combined</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="single-model-search">
+                        <h3>Continuous Charge</h3>
+                        <input type="checkbox" id="toggle" />
+                        <label for="toggle"></label>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="single-model-search lastButton" id="endDiv">
+                        <button class="welcome-btn model-search-btn" id="runButton" onclick="submit()">
+                            Go
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="container">
+    </div>
+</section>
+
+<section id="results">
+    <h1>Results</h1>
+
+    <div id="hide1" class="col-md-12 col-sd-12 rec">
+        <h4>
+            Our recommendation:<br><div id="reco"></div>
+        </h4>
+        <p>Start charging then for the highest use of green energy in your selected timeframe.</p>
+    </div>
+
+    <div class="col-md-6 col-sm-12" id="hide2">
+        <p>
+            To the right you can find the recommended times to load and their efficiency scores.
+            Our efficiency scores reflect how well the green energy available is used in the selected timespan.
+        </p>
+        <p>
+            Below you can find a bigger chart, showing the efficiency how your grid for a bigger timeframe.
+            This way you can have some idea of when using energy generally is better for the environment.
+        </p>
+    </div>
+    <div id="result-container" class="col-md-6 col-sm-12"></div>
+    <div id="result-chart" class="col-md-12 col-sm-12">
+        <canvas id="chart"></canvas>
+    </div>
+
+</section>
+<script>
+    // Only show results section after button-click
+    const toggleButton = document.getElementById('runButton');
+    const sectionToToggle = document.getElementById('results');
+    toggleButton.addEventListener('click', function() {
+        sectionToToggle.style.display = 'block';
+    });
+</script>
+
+<!--service start -->
+<section id="sustainability" class="sustainability">
+    <div class="container">
+        <div class="service-content">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="model-search-content">
-                        <div class="row">
-
-                            <div class="col-md-offset-1 col-md-2 col-sm-12">
-                                <div class="single-model-search">
-                                    <h2>Continuous <br> loading</h2>
-                                    <input type="checkbox" id="toggle" />
-                                    <label for="toggle"></label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-offset-1 col-md-2 col-sm-12">
-                                <div class="single-model-search">
-                                    <h2>Enter ZIP</h2>
-                                    <div class="model-input">
-                                        <input class="form-control" type="text" id='zipcode' name="zipcode" placeholder="ZIP" pattern="\d{5}" maxlength="5" inputmode="numeric" value="60594" required />
-                                        <script>
-                                            document.getElementById('zipcode').addEventListener('input', function (e) {
-                                                this.value = this.value.replace(/[^0-9]/g, '').slice(0, 5);
-                                            });
-                                        </script>
-                                    </div>
-                                    <!-- /.model-select-icon -->
-                                </div>
-                            </div>
-
-                            <div class="col-md-offset-1 col-md-2 col-sm-12">
-                                <div class="single-model-search">
-                                    <h2>Enter Loading Time</h2>
-                                    <div class="model-input">
-                                        <input class="form-control" type="text" id='loading' name="loading" placeholder="hh" pattern="\d{5}" maxlength="2" inputmode="numeric" value="4" required />
-                                        <script>
-                                            document.getElementById('loading').addEventListener('input', function (e) {
-                                                this.value = this.value.replace(/[^0-9]/g, '').slice(0, 5);
-                                            });
-                                        </script>
-                                    </div>
-                                    <!-- /.model-select-icon -->
-                                </div>
-                            </div>
-
-                            <div class="col-md-offset-1 col-md-2 col-sm-12">
-                                <div class="single-model-search">
-                                    <h2>Enter Departure Time</h2>
-                                    <div class="model-input">
-                                        <input class="form-control" type="text" id='dep' name="dep" placeholder="hh" pattern="\d{5}" maxlength="2" inputmode="numeric" value="12" required />
-                                        <script>
-                                            document.getElementById('dep').addEventListener('input', function (e) {
-                                                this.value = this.value.replace(/[^0-9]/g, '').slice(0, 5);
-                                            });
-                                        </script>
-                                    </div>
-                                    <!-- /.model-select-icon -->
-                                </div>
-                            </div>
-
-                            <div class="col-md-offset-1 col-md-2 col-sm-12">
-                                <div class="single-model-search">
-                                    <h2>Select Modi</h2>
-                                    <div class="model-select-icon">
-                                        <select class="form-control" id="modi">
-                                            <option value="norm">No-Solar</option>
-                                            <option value="solar">Just-Solar</option>
-                                            <option value="comb">Combined</option>
-                                        </select>
-                                        <!-- /.select-->
-                                    </div>
-                                    <!-- /.model-select-icon -->
-                                </div>
-                            </div>
-
-                            <div class="col-md-2 col-sm-12">
-                                <div class="single-model-search text-center">
-                                    <button class="welcome-btn model-search-btn" onclick="submit()">
-                                        Go
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div id="result-container" class="col-md-2 col-sm-12"></div>
-                            <div id="result-chart" class="col-md-2 col-sm-12">
-                                <canvas id="chart"></canvas>
-                            </div>
-
+                <h1>Features</h1>
+                <div class="col-md-4 col-sm-6">
+                    <div class="single-service-item">
+                        <div class="single-service-icon">
+                            <i class="flaticon-car"></i>
                         </div>
+                        <h2><a href="#">Green Energy</a></h2>
+                        <p>
+                            Green energy refers to energy that is sourced from a sustainable and renewable energy source, such as solar power, wind turbines or hydroelectric power.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="single-service-item">
+                        <div class="single-service-icon">
+                            <i class="flaticon-car-repair"></i>
+                        </div>
+                        <h2><a href="#">Predict and Estimate</a></h2>
+                        <p>Based on previous data, we predict when green energy will be available at your location and estimate the best time to charge your car.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="single-service-item">
+                        <div class="single-service-icon">
+                            <i class="flaticon-car-1"></i>
+                        </div>
+                        <h2><a href="#">Weather Sensitive</a></h2>
+                        <p>To improve estimation quality, we pull weather data to fine-tune charge duration.</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
-    </section>
-    <!--/.welcome-hero-->
-    <!--welcome-hero end -->
-
-    <!--service start -->
-    <section id="sustainability" class="sustainability">
-        <div class="container">
-            <div class="service-content">
-                <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-service-item">
-                            <div class="single-service-icon">
-                                <i class="flaticon-car"></i>
-                            </div>
-                            <h2><a href="#">Green Energy</a></h2>
-                            <p>"Green Energy" means that it comes from a sustainable renewable energy source, such as solar systems, windmills, watermills, and more.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-service-item">
-                            <div class="single-service-icon">
-                                <i class="flaticon-car-repair"></i>
-                            </div>
-                            <h2><a href="#">Predict and Estimate</a></h2>
-                            <p>Based on previous data, we predict when green energy will be available at your location and estimate the best time to charge your car.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <div class="single-service-item">
-                            <div class="single-service-icon">
-                                <i class="flaticon-car-1"></i>
-                            </div>
-                            <h2><a href="#">Weather sensitive</a></h2>
-                            <p>To improve estimation quality, we pull weather data to fine-tune charge duration.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+<section id="about-us" class="about-us">
+    <h1>About Us</h1>
+    <div class="col-md-12 col-sm-12 imagetextgrp imageright">
+        <img src="./static/images/john-towner-unsplash.jpg">
+        <div>
+            <h2>Our Mission</h2>
+            <p>At GreenPeak Charge, we are dedicated to shaping a better, more climate-friendly future.
+                We believe in the power of individual actions to reduce carbon footprints without
+                drastic lifestyle changes. By encouraging small, sustainable habits,
+                we make a significant impact over time.
+            </p>
         </div>
-        <!--/.container-->
-    </section>
-    <!--/.service-->
-    <!--service end-->
-
-    <!--contact start-->
-    <footer class="footer">
-        <div class="left">
-            &copy; 2024 GreenPeak Charge - All rights reserved.
+    </div>
+    <div class="col-md-12 col-sm-12 imagetextgrp imageleft">
+        <img src="./static/images/zaptec-unsplash.jpg">
+        <div>
+            <h2>Our Approach</h2>
+            <p>Humans are creatures of habit, and we leverage this innate behavior to foster intrinsic
+                motivation towards climate-friendly actions. Our tool estimates optimal electric vehicle
+                charging times based on available green energy sources like solar, wind, and hydroelectric power.
+                By incorporating weather data, we enhance accuracy and promote greener energy consumption.
+            </p>
         </div>
-        <div class="right">
-            This is a project by xxx.
+    </div>
+    <div class="col-md-12 col-sm-12 imagetextgrp imageright">
+        <img src="./static/images/anders-j-unsplash.jpg">
+        <div>
+            <h2>Why It Matters</h2>
+            <p>With the increasing adoption of electric vehicles, our reliance on energy for charging grows.
+                GreenPeak Charge raises awareness about using green energy whenever possible and advocates
+                for expanded renewable energy sources. Together, we can pave the way towards a more sustainable future.
+            </p>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/static/js/jquery.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/bootsnav.js"></script>
-    <script src="/static/js/api.js"></script>
+<footer class="footer">
+    <div class="left">
+        &copy; 2024 GreenPeak Charge - All rights reserved.
+    </div>
+    <div class="right">
+        This is a project developed by Alexander Guddat, Christopher Schieren, Ben Staab, Roopdeep Virk & Maja Wenzel.
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootsnav.js"></script>
+<script src="/static/js/api.js"></script>
 
 </body>
-
 </html>
