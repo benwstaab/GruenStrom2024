@@ -39,11 +39,6 @@ function submit() {
 }
 
 function renderChart(data) {
-    // Reset any existing chart
-    if (window.myChart) {
-        window.myChart.destroy();
-    }
-
     let labels = data.map(entry => entry.time_str);
 
     // Extract all details fields dynamically
@@ -64,7 +59,7 @@ function renderChart(data) {
         label: 'Efficiency',
         data: data.map(entry => entry.value),
         fill: false,
-        borderColor: 'rgb(75, 192, 192)', // Red color for highlight
+        borderColor: '#366233', // Red color for highlight
         tension: 0.1
     });
 
@@ -124,11 +119,20 @@ function renderChart(data) {
 function renderTable(response) {
     const container = document.getElementById('result-container');
     container.innerHTML = ""; // Clear any previous content
+    document.getElementById("reco").innerHTML = "";
+
+    if (window.myChart) {
+        window.myChart.destroy();
+    }
 
     if (response.code === 200) {
+        document.getElementById("hide1").style.display = "block";
+        document.getElementById("hide2").style.display = "block";
         data = response.data.filter(entry => entry.highest == 1)
         const table = document.createElement('table');
         table.className = 'table table-striped';
+
+        document.getElementById("reco").innerHTML = data[0].time_str.split(' ')[1].replace('00:00', '00');
 
         const thead = document.createElement('thead');
         const headerRow = document.createElement('tr');
@@ -164,8 +168,12 @@ function renderTable(response) {
 
         container.appendChild(table);
     } else {
+        document.getElementById("hide1").style.display = "none";
+        document.getElementById("hide2").style.display = "none";
+
         const errorMsg = document.createElement('p');
         errorMsg.className = 'text-danger';
+        errorMsg.style.textAlign = 'center'
         errorMsg.innerText = `Error: ${response.data}`;
         container.appendChild(errorMsg);
     }
