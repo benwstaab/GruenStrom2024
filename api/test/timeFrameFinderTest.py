@@ -18,6 +18,7 @@ class TestGetTimeFrame(unittest.TestCase):
 
     def test_basic_functionality(self):
         result = getTimeFrame(self.sample_value, split=1, dur=2, take_off=18)
+        result = [entry for entry in result if entry['highest'] == 1]
         self.assertEqual(len(result), 2)
         self.assertEqual(result[0]["value"], 40)
         self.assertEqual(result[1]["value"], 50)
@@ -28,6 +29,7 @@ class TestGetTimeFrame(unittest.TestCase):
             {"epochtime": self.current_time + 28000, "value": 10},
         ]
         result = getTimeFrame(self.sample_value + additional_value, split=0, dur=3, take_off=18)
+        result = [entry for entry in result if entry['highest'] == 1]
         self.assertEqual(len(result), 3)
         self.assertEqual(result[0]["value"], 20)
         self.assertEqual(result[1]["value"], 50)
@@ -38,6 +40,7 @@ class TestGetTimeFrame(unittest.TestCase):
             {"epochtime": self.current_time + 10000, "value": 100},
         ]
         result = getTimeFrame(future_value, split=1, dur=3, take_off=18)
+        result = [entry for entry in result if entry['highest'] == 1]
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0]["value"], 100)
 
