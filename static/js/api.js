@@ -13,7 +13,7 @@ function submit() {
     }
 
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", `https://weird-maggie-greanpeakcharger-39eb0a74.koyeb.app/`);
+    xhr.open("GET", `https://weird-maggie-greanpeakcharger-39eb0a74.koyeb.app/${link}?zip=${zip}&dur=${loading}&takeOff=${takeOff}&split=${cl}`, true);
     xhr.responseType = "json";
 
     xhr.onload = () => {
